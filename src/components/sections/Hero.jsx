@@ -1,4 +1,5 @@
 import Button from '../ui/Button';
+import profileImage from '../../assets/IMG20240318173046.jpg';
 
 const Hero = () => {
   const expertise = [
@@ -11,7 +12,7 @@ const Hero = () => {
   ];
 
   return (
-    <section className="min-h-screen flex items-center justify-center py-20">
+    <section id="home" className="min-h-screen flex items-center justify-center py-20">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -89,9 +90,8 @@ const Hero = () => {
                 
                 {/* Photo */}
                 <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl">
-                  {/* Replace src with your actual photo path */}
                   <img
-                    src="/src/assets/IMG20240318173046.jpg"
+                    src={profileImage}
                     alt="Utkarsh Singh"
                     className="w-full h-full object-cover"
                   />
