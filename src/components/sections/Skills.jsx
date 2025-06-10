@@ -1,3 +1,5 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
 // Import skill icons
 import htmlIcon from '../../assets/icons8-html-5.svg';
 import cssIcon from '../../assets/icons8-css-logo.svg';
@@ -10,127 +12,115 @@ import mysqlIcon from '../../assets/icons8-mysql.svg';
 import figmaIcon from '../../assets/icons8-figma.svg';
 import viteIcon from '../../assets/vite.svg';
 
-const Skills = () => {
-  const skills = [
-    {
-      name: 'HTML5',
-      level: 'Advanced',
-      icon: htmlIcon,
-      category: 'Frontend'
-    },
-    {
-      name: 'CSS3',
-      level: 'Advanced',
-      icon: cssIcon,
-      category: 'Frontend'
-    },
-    {
-      name: 'JavaScript',
-      level: 'Advanced',
-      icon: jsIcon,
-      category: 'Frontend'
-    },
-    {
-      name: 'React',
-      level: 'Advanced',
-      icon: reactIcon,
-      category: 'Frontend'
-    },
-    {
-      name: 'Node.js',
-      level: 'Intermediate',
-      icon: nodeIcon,
-      category: 'Backend'
-    },
-    {
-      name: 'Git',
-      level: 'Intermediate',
-      icon: gitIcon,
-      category: 'Tools'
-    },
-    {
-      name: 'Tailwind CSS',
-      level: 'Advanced',
-      icon: tailwindIcon,
-      category: 'Frontend'
-    },
-    {
-      name: 'MySQL',
-      level: 'Intermediate',
-      icon: mysqlIcon,
-      category: 'Backend'
-    },
-    {
-      name: 'Figma',
-      level: 'Intermediate',
-      icon: figmaIcon,
-      category: 'Tools'
-    },
-    {
-      name: 'Vite',
-      level: 'Intermediate',
-      icon: viteIcon,
-      category: 'Tools'
-    }
-  ];
+const categories = ["Frontend", "Backend", "Tools"];
 
-  // Group skills by category
-  const groupedSkills = skills.reduce((acc, skill) => {
-    if (!acc[skill.category]) {
-      acc[skill.category] = [];
-    }
-    acc[skill.category].push(skill);
-    return acc;
-  }, {});
+const skills = [
+  { name: "HTML5", icon: htmlIcon, level: 5, category: "Frontend" },
+  { name: "CSS3", icon: cssIcon, level: 5, category: "Frontend" },
+  { name: "JavaScript", icon: jsIcon, level: 5, category: "Frontend" },
+  { name: "React", icon: reactIcon, level: 5, category: "Frontend" },
+  { name: "Tailwind CSS", icon: tailwindIcon, level: 4, category: "Frontend" },
+  { name: "Node.js", icon: nodeIcon, level: 4, category: "Backend" },
+  { name: "MySQL", icon: mysqlIcon, level: 3, category: "Backend" },
+  { name: "Git", icon: gitIcon, level: 4, category: "Tools" },
+  { name: "Figma", icon: figmaIcon, level: 3, category: "Tools" },
+  { name: "Vite", icon: viteIcon, level: 3, category: "Tools" },
+];
+
+const skillLevels = ["Beginner", "Intermediate", "Advanced", "Expert", "Master"];
+
+export default function Skills() {
+  const [activeCategory, setActiveCategory] = useState("Frontend");
 
   return (
-    <section id="skills" className="py-20 bg-gray-50 dark:bg-gray-800">
+    <section id="skills" className="py-20 bg-gradient-to-br from-gray-50/80 via-white/60 to-primary-50/80 dark:from-gray-900 dark:via-gray-800 dark:to-primary-950 transition-colors">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+        {/* Heading */}
+        <div className="text-center mb-10">
+          <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white tracking-tight mb-2">
             Skill Set
           </h2>
-          <div className="w-24 h-1 bg-primary-500 mx-auto rounded-full"></div>
+          <div className="w-24 h-1 mx-auto bg-primary-500 dark:bg-primary-400 rounded-full mb-4" />
+          <p className="text-gray-500 dark:text-gray-400 text-lg">
+            My core technologies and tools
+          </p>
+        </div>
+
+        {/* Category Tabs */}
+        <div className="flex justify-center gap-4 mb-10">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-5 py-2 rounded-full font-semibold transition-all duration-200
+                ${activeCategory === cat
+                  ? "bg-primary-600 text-white shadow-lg dark:bg-primary-400 dark:text-gray-900"
+                  : "bg-white/10 border border-white/20 text-primary-600 dark:text-primary-300 dark:bg-gray-800/40 hover:bg-primary-100 dark:hover:bg-primary-900/30"
+                }`}
+              aria-pressed={activeCategory === cat}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
         {/* Skills Grid */}
-        <div className="space-y-12">
-          {Object.entries(groupedSkills).map(([category, categorySkills]) => (
-            <div key={category}>
-              <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-6">
-                {category}
-              </h3>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                {categorySkills.map((skill) => (
-                  <div
-                    key={skill.name}
-                    className="group relative bg-white dark:bg-gray-700 p-6 rounded-lg border border-gray-200 dark:border-gray-600 
-                             transition-all duration-300 hover:scale-105 hover:shadow-md hover:border-primary-200 dark:hover:border-primary-800
-                             flex flex-col items-center text-center"
-                  >
-                    <div className="mb-3 transition-transform duration-300 group-hover:scale-110">
-                      <img
-                        src={skill.icon}
-                        alt={`${skill.name} icon`}
-                        className="w-12 h-12 object-contain"
-                        loading="lazy"
-                      />
-                    </div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                      {skill.name}
-                    </h4>
-                    <p className="text-sm text-gray-600 dark:text-gray-400">
-                      {skill.level}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.08 } }
+          }}
+        >
+          {skills
+            .filter((s) => s.category === activeCategory)
+            .map((skill, idx) => (
+              <motion.div
+                key={skill.name}
+                className="group relative rounded-2xl border border-white/20 bg-white/10 dark:bg-gray-800/40 backdrop-blur-md p-8 flex flex-col items-center shadow-lg transition-all duration-300 hover:shadow-2xl hover:border-primary-400"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: idx * 0.05, type: "spring" }}
+                tabIndex={0}
+                aria-label={skill.name}
+                title={skill.name}
+              >
+                {/* Icon */}
+                <motion.img
+                  src={skill.icon}
+                  alt={`${skill.name} icon`}
+                  className="w-14 h-14 mb-4 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300"
+                  whileHover={{ scale: 1.15, filter: "drop-shadow(0 0 8px #0ea5e9)" }}
+                  whileFocus={{ scale: 1.15, filter: "drop-shadow(0 0 8px #0ea5e9)" }}
+                />
+                {/* Name */}
+                <span className="text-lg font-bold text-gray-900 dark:text-white mb-1 text-center">
+                  {skill.name}
+                </span>
+                {/* Proficiency */}
+                <span className="text-sm text-gray-500 dark:text-gray-300 mb-2">
+                  {skillLevels[skill.level - 1]}
+                </span>
+                {/* Proficiency Dots */}
+                <div className="flex gap-1 justify-center mt-1">
+                  {[1, 2, 3, 4, 5].map((i) => (
+                    <span
+                      key={i}
+                      className={`inline-block w-2 h-2 rounded-full transition-all duration-200
+                        ${i <= skill.level
+                          ? "bg-primary-500 dark:bg-primary-300"
+                          : "bg-gray-300 dark:bg-gray-700"
+                        }`}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Skills; 
+} 
