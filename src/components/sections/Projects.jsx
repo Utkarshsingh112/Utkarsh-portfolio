@@ -1,95 +1,76 @@
-import Card from '../ui/Card';
-import Button from '../ui/Button';
+import { useState, useMemo } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import ProjectCard from './ProjectCard';
+
+const projects = [
+  {
+    id: 1,
+    title: 'E-Commerce Platform',
+    description: 'A full-stack e-commerce platform with real-time inventory management, user authentication, and payment processing.',
+    image: '/projects/ecommerce.jpg',
+    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux'],
+    liveLink: 'https://ecommerce-demo.com',
+    githubLink: 'https://github.com/username/ecommerce',
+    featured: true,
+  },
+  {
+    id: 2,
+    title: 'Task Management App',
+    description: 'A collaborative task management application with real-time updates, drag-and-drop interface, and team collaboration features.',
+    image: '/projects/taskmanager.jpg',
+    technologies: ['React', 'Firebase', 'Tailwind CSS', 'Framer Motion'],
+    liveLink: 'https://taskmanager-demo.com',
+    githubLink: 'https://github.com/username/taskmanager',
+    featured: true,
+  },
+  {
+    id: 3,
+    title: 'Portfolio Website',
+    description: 'A modern portfolio website showcasing projects and skills with smooth animations and responsive design.',
+    image: '/projects/portfolio.jpg',
+    technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite'],
+    liveLink: 'https://portfolio-demo.com',
+    githubLink: 'https://github.com/username/portfolio',
+    featured: false,
+  },
+  // Add more projects as needed
+];
+
+// Get unique technologies for filter
+const allTechnologies = [...new Set(projects.flatMap(project => project.technologies))];
 
 const Projects = () => {
-  const projects = [
-    {
-      title: 'Project 1',
-      description: 'A brief description of project 1',
-      image: '/placeholder.jpg',
-      technologies: ['React', 'Node.js', 'MongoDB'],
-      liveLink: '#',
-      githubLink: '#',
-    },
-    {
-      title: 'Project 2',
-      description: 'A brief description of project 2',
-      image: '/placeholder.jpg',
-      technologies: ['React', 'Firebase', 'Tailwind'],
-      liveLink: '#',
-      githubLink: '#',
-    },
-    {
-      title: 'Project 3',
-      description: 'A brief description of project 3',
-      image: '/placeholder.jpg',
-      technologies: ['React', 'Express', 'PostgreSQL'],
-      liveLink: '#',
-      githubLink: '#',
-    },
-  ];
-
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-20 bg-gray-50 dark:bg-gray-900">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-12">
-          Projects
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
-            <Card
-              key={project.title}
-              variant="elevated"
-              hover
-              className="flex flex-col h-full"
-            >
-              <div className="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-600 rounded-t-lg">
-                {/* Add actual image here */}
-                <div className="w-full h-48 bg-gray-200 dark:bg-gray-600" />
-              </div>
-              <Card.Content className="flex-1">
-                <Card.Title>{project.title}</Card.Title>
-                <Card.Description className="mb-4">
-                  {project.description}
-                </Card.Description>
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-3 py-1 bg-gray-100 dark:bg-gray-600 text-gray-700 dark:text-gray-300 rounded-full text-sm"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </Card.Content>
-              <Card.Footer>
-                <div className="flex gap-4">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    as="a"
-                    href={project.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Live Demo
-                  </Button>
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    as="a"
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </Button>
-                </div>
-              </Card.Footer>
-            </Card>
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            My Projects
+          </h2>
+          <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Here are some of my recent projects. Each project is a unique piece of development, showcasing different skills and technologies.
+          </p>
+        </motion.div>
+
+        {/* Projects Grid */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {projects.map(project => (
+            <ProjectCard key={project.id} project={project} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
