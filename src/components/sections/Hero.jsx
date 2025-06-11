@@ -82,9 +82,9 @@ const Hero = () => {
       {/* Animated Background Elements */}
       <div className="absolute inset-0 -z-10">
         {/* Gradient Blobs */}
-        <div className="absolute top-1/4 -left-4 w-72 h-72 bg-primary-300/30 dark:bg-primary-600/20 rounded-full mix-blend-multiply filter blur-xl animate-blob" />
+        {/* <div className="absolute top-1/4 -left-4 w-72 h-72 bg-primary-300/30 dark:bg-primary-600/20 rounded-full mix-blend-multiply filter blur-xl animate-blob" />
         <div className="absolute top-1/3 -right-4 w-72 h-72 bg-purple-300/30 dark:bg-purple-600/20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-2000" />
-        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300/30 dark:bg-pink-600/20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000" />
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-pink-300/30 dark:bg-pink-600/20 rounded-full mix-blend-multiply filter blur-xl animate-blob animation-delay-4000" /> */}
         
         {/* Grid Pattern */}
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] dark:opacity-[0.05]" />
