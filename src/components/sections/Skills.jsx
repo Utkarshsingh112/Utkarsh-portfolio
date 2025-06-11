@@ -11,29 +11,37 @@ import tailwindIcon from '../../assets/icons8-tailwindcss.svg';
 import mysqlIcon from '../../assets/icons8-mysql.svg';
 import figmaIcon from '../../assets/icons8-figma.svg';
 import viteIcon from '../../assets/vite.svg';
+import cIcon from '../../assets/icons8-c.svg';
 
-const categories = ["Frontend", "Backend", "Tools"];
+const categories = ["Frontend", "Backend", "Tools & Others"];
 
 const skills = [
-  { name: "HTML5", icon: htmlIcon, level: 5, category: "Frontend" },
-  { name: "CSS3", icon: cssIcon, level: 5, category: "Frontend" },
-  { name: "JavaScript", icon: jsIcon, level: 5, category: "Frontend" },
-  { name: "React", icon: reactIcon, level: 5, category: "Frontend" },
-  { name: "Tailwind CSS", icon: tailwindIcon, level: 4, category: "Frontend" },
-  { name: "Node.js", icon: nodeIcon, level: 4, category: "Backend" },
-  { name: "MySQL", icon: mysqlIcon, level: 3, category: "Backend" },
-  { name: "Git", icon: gitIcon, level: 4, category: "Tools" },
-  { name: "Figma", icon: figmaIcon, level: 3, category: "Tools" },
-  { name: "Vite", icon: viteIcon, level: 3, category: "Tools" },
+  { name: "HTML5", icon: htmlIcon, level: 5, category: "Frontend", description: "Semantic HTML, Accessibility" },
+  { name: "CSS3", icon: cssIcon, level: 5, category: "Frontend", description: "Modern CSS, Animations" },
+  { name: "JavaScript", icon: jsIcon, level: 5, category: "Frontend", description: "ES6+, Modern JS" },
+  { name: "React", icon: reactIcon, level: 5, category: "Frontend", description: "Hooks, Context, Performance" },
+  { name: "Tailwind CSS", icon: tailwindIcon, level: 5, category: "Frontend", description: "Custom Config, Plugins" },
+  { name: "Node.js", icon: nodeIcon, level: 4, category: "Backend", description: "Express, REST APIs" },
+  { name: "MySQL", icon: mysqlIcon, level: 4, category: "Backend", description: "Database Design, Optimization" },
+  { name: "C/C++", icon: cIcon, level: 4, category: "Backend", description: "System Programming, Algorithms" },
+  { name: "Git", icon: gitIcon, level: 5, category: "Tools & Others", description: "GitHub, GitLab, CI/CD" },
+  { name: "Figma", icon: figmaIcon, level: 4, category: "Tools & Others", description: "UI Design, Prototyping" },
+  { name: "Vite", icon: viteIcon, level: 4, category: "Tools & Others", description: "Build Tools, Development" },
 ];
 
-const skillLevels = ["Beginner", "Intermediate", "Advanced", "Expert", "Master"];
+const skillLevels = {
+  1: "Learning",
+  2: "Familiar",
+  3: "Proficient",
+  4: "Advanced",
+  5: "Expert"
+};
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState("Frontend");
 
   return (
-    <section id="skills" className="py-20 bg-gradient-to-br from-gray-50/80 via-white/60 to-primary-50/80 dark:from-gray-900 dark:via-gray-800 dark:to-primary-950 transition-colors">
+    <section id="skills" className="py-20 bg-gradient-to-br from-[#f5f5f5] via-[#ffffff] to-[#eaeaea] dark:from-[#0d0d0d] dark:via-[#121212] dark:to-[#1a1a1a] transition-colors">
       <div className="container mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-10">
@@ -100,9 +108,13 @@ export default function Skills() {
                 <span className="text-lg font-bold text-gray-900 dark:text-white mb-1 text-center">
                   {skill.name}
                 </span>
+                {/* Description */}
+                <p className="text-sm text-gray-500 dark:text-gray-300 mb-2">
+                  {skill.description}
+                </p>
                 {/* Proficiency */}
                 <span className="text-sm text-gray-500 dark:text-gray-300 mb-2">
-                  {skillLevels[skill.level - 1]}
+                  {skillLevels[skill.level]}
                 </span>
                 {/* Proficiency Dots */}
                 <div className="flex gap-1 justify-center mt-1">

@@ -6,37 +6,37 @@ import { ArrowDownIcon, CodeBracketIcon, CommandLineIcon, PaintBrushIcon, Server
 
 const expertise = [
   { 
-    text: 'Full Stack Development',
+    text: 'React & Next.js Development',
     icon: CodeBracketIcon,
     color: 'text-blue-500 dark:text-blue-400'
   },
   { 
-    text: 'React & Node.js',
-    icon: CommandLineIcon,
-    color: 'text-green-500 dark:text-green-400'
-  },
-  { 
-    text: 'UI/UX Design',
+    text: 'Modern UI/UX Design',
     icon: PaintBrushIcon,
     color: 'text-purple-500 dark:text-purple-400'
   },
   { 
-    text: 'Responsive Web Applications',
+    text: 'RESTful APIs & Backend',
     icon: ServerIcon,
     color: 'text-orange-500 dark:text-orange-400'
   },
   { 
-    text: 'Database Management',
+    text: 'Database Architecture',
     icon: WrenchScrewdriverIcon,
     color: 'text-red-500 dark:text-red-400'
+  },
+  { 
+    text: 'Performance Optimization',
+    icon: CommandLineIcon,
+    color: 'text-green-500 dark:text-green-400'
   }
 ];
 
 const roles = [
-  "Full Stack Developer",
-  "UI/UX Enthusiast",
-  "Problem Solver",
-  "Tech Innovator"
+  "React Developer",
+  "UI/UX Designer",
+  "Backend Engineer",
+  "Problem Solver"
 ];
 
 const Hero = () => {
@@ -127,8 +127,10 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                I'm a passionate Full Stack Developer focused on creating elegant, efficient, and user-friendly web applications. 
-                With expertise in modern web technologies, I help businesses transform their ideas into powerful digital solutions.
+                I'm a passionate developer who loves crafting beautiful, performant web applications. 
+                With a keen eye for design and a focus on user experience, I specialize in building 
+                modern React applications that are both powerful and delightful to use. When I'm not 
+                coding, you'll find me exploring new technologies or contributing to open-source projects.
               </motion.p>
 
               {/* Expertise Badges */}

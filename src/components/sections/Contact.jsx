@@ -1,48 +1,48 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub, faInstagram } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin, faGithub, faXTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
 
 const socialLinks = [
   {
     name: 'LinkedIn',
     icon: faLinkedin,
-    url: 'https://linkedin.com/in/yourusername',
+    url: 'https://linkedin.com/in/utkarshsingh-dev',
     color: 'text-blue-600 dark:text-blue-400',
     hoverColor: 'hover:text-blue-700 dark:hover:text-blue-300',
   },
   {
     name: 'GitHub',
     icon: faGithub,
-    url: 'https://github.com/yourusername',
+    url: 'https://github.com/utkarshsingh',
     color: 'text-gray-900 dark:text-gray-100',
     hoverColor: 'hover:text-gray-700 dark:hover:text-gray-300',
   },
   {
-    name: 'Instagram',
-    icon: faInstagram,
-    url: 'https://instagram.com/yourusername',
-    color: 'text-pink-600 dark:text-pink-400',
-    hoverColor: 'hover:text-pink-700 dark:hover:text-pink-300',
+    name: 'X',
+    icon: faXTwitter,
+    url: 'https://x.com/utkarshsingh_dev',
+    color: 'text-black dark:text-white',
+    hoverColor: 'hover:text-gray-700 dark:hover:text-gray-300',
   },
 ];
 
 const contactInfo = [
   {
     icon: faEnvelope,
-    text: 'your.email@example.com',
-    link: 'mailto:your.email@example.com',
+    text: 'utkarsh.singh@example.com',
+    link: 'mailto:utkarsh.singh@example.com',
   },
   {
     icon: faPhone,
-    text: '+1 (234) 567-8900',
-    link: 'tel:+12345678900',
+    text: '+91 98765 43210',
+    link: 'tel:+919876543210',
   },
   {
     icon: faMapMarkerAlt,
-    text: 'Your Location, City, Country',
-    link: 'https://maps.google.com',
+    text: 'New Delhi, India',
+    link: 'https://maps.google.com/?q=New+Delhi,India',
   },
 ];
 
@@ -68,7 +68,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-gray-50/80 via-white/60 to-primary-50/80 dark:from-gray-900 dark:via-gray-800 dark:to-primary-950">
+    <section id="contact" className="py-20 bg-gradient-to-br from-[#f5f5f5] via-[#ffffff] to-[#eaeaea] dark:from-[#0d0d0d] dark:via-[#121212] dark:to-[#1a1a1a]">
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div
@@ -83,7 +83,8 @@ const Contact = () => {
           </h2>
           <div className="w-24 h-1 mx-auto bg-primary-500 dark:bg-primary-400 rounded-full mb-4" />
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Have a project in mind or want to discuss potential opportunities? Feel free to reach out!
+            I'm always excited to connect with fellow developers and explore new opportunities. 
+            Whether you have a project in mind or just want to chat about tech, feel free to reach out!
           </p>
         </motion.div>
 
