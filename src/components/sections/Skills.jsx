@@ -100,7 +100,7 @@ export default function Skills() {
                 <motion.img
                   src={skill.icon}
                   alt={`${skill.name} icon`}
-                  className="w-14 h-14 mb-4 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300"
+                  className="w-14 h-14 mb-4 group-hover:scale-110 transition-all duration-300"
                   whileHover={{ scale: 1.15, filter: "drop-shadow(0 0 8px #0ea5e9)" }}
                   whileFocus={{ scale: 1.15, filter: "drop-shadow(0 0 8px #0ea5e9)" }}
                 />
@@ -112,23 +112,7 @@ export default function Skills() {
                 <p className="text-sm text-gray-500 dark:text-gray-300 mb-2">
                   {skill.description}
                 </p>
-                {/* Proficiency */}
-                <span className="text-sm text-gray-500 dark:text-gray-300 mb-2">
-                  {skillLevels[skill.level]}
-                </span>
-                {/* Proficiency Dots */}
-                <div className="flex gap-1 justify-center mt-1">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <span
-                      key={i}
-                      className={`inline-block w-2 h-2 rounded-full transition-all duration-200
-                        ${i <= skill.level
-                          ? "bg-primary-500 dark:bg-primary-300"
-                          : "bg-gray-300 dark:bg-gray-700"
-                        }`}
-                    />
-                  ))}
-                </div>
+                
               </motion.div>
             ))}
         </motion.div>

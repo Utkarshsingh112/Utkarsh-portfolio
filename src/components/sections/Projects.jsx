@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ProjectCard from './ProjectCard';
+import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 
 const projects = [
   {
@@ -49,6 +50,21 @@ const projects = [
 const allTechnologies = [...new Set(projects.flatMap(project => project.technologies))];
 
 const Projects = () => {
+  const [showAll, setShowAll] = useState(false);
+
+  // Separate featured and non-featured projects
+  const { featuredProjects, otherProjects } = useMemo(() => {
+    return {
+      featuredProjects: projects.filter(project => project.featured),
+      otherProjects: projects.filter(project => !project.featured)
+    };
+  }, []);
+
+  // Toggle show all projects
+  const toggleShowAll = () => {
+    setShowAll(prev => !prev);
+  };
+
   return (
     <section id="projects" className="py-20 bg-gradient-to-br from-[#f5f5f5] via-[#ffffff] to-[#eaeaea] dark:from-[#0d0d0d] dark:via-[#121212] dark:to-[#1a1a1a]">
       <div className="container mx-auto px-4">
@@ -74,11 +90,57 @@ const Projects = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="space-y-8"
         >
-          {projects.map(project => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
+          {/* Featured Projects */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredProjects.map(project => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+
+          {/* Other Projects with Show More Button */}
+          {otherProjects.length > 0 && (
+            <div className="space-y-8">
+              <AnimatePresence>
+                {showAll && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                  >
+                    {otherProjects.map(project => (
+                      <ProjectCard key={project.id} project={project} />
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Show More Button */}
+              <motion.div
+                className="flex justify-center"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+              >
+                <button
+                  onClick={toggleShowAll}
+                  className="group flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300"
+                >
+                  <span className="text-gray-700 dark:text-gray-300 font-medium">
+                    {showAll ? 'Show Less' : 'Show More'}
+                  </span>
+                  {showAll ? (
+                    <ChevronUpIcon className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors" />
+                  ) : (
+                    <ChevronDownIcon className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors" />
+                  )}
+                </button>
+              </motion.div>
+            </div>
+          )}
         </motion.div>
       </div>
     </section>

@@ -8,21 +8,21 @@ const socialLinks = [
   {
     name: 'LinkedIn',
     icon: faLinkedin,
-    url: 'https://linkedin.com/in/utkarshsingh-dev',
+    url: 'https://linkedin.com/in/utkarsh-singh10',
     color: 'text-blue-600 dark:text-blue-400',
     hoverColor: 'hover:text-blue-700 dark:hover:text-blue-300',
   },
   {
     name: 'GitHub',
     icon: faGithub,
-    url: 'https://github.com/utkarshsingh',
+    url: 'https://github.com/Utkarshsingh112',
     color: 'text-gray-900 dark:text-gray-100',
     hoverColor: 'hover:text-gray-700 dark:hover:text-gray-300',
   },
   {
     name: 'X',
     icon: faXTwitter,
-    url: 'https://x.com/utkarshsingh_dev',
+    url: 'https://x.com/@_Utkarsh_002',
     color: 'text-black dark:text-white',
     hoverColor: 'hover:text-gray-700 dark:hover:text-gray-300',
   },
@@ -31,18 +31,18 @@ const socialLinks = [
 const contactInfo = [
   {
     icon: faEnvelope,
-    text: 'utkarsh.singh@example.com',
-    link: 'mailto:utkarsh.singh@example.com',
+    text: 'utkarshsinghrajawat12@gmail.com',
+    link: 'mailto:utkarshsinghrajawat12@gmail.com',
   },
   {
     icon: faPhone,
-    text: '+91 98765 43210',
-    link: 'tel:+919876543210',
+    text: '+91 9351571387',
+    link: 'tel:+919351571387',
   },
   {
     icon: faMapMarkerAlt,
-    text: 'New Delhi, India',
-    link: 'https://maps.google.com/?q=New+Delhi,India',
+    text: 'Jaipur,Rajasthan,India',
+    link: 'https://maps.google.com/?q=Jaipur,India',
   },
 ];
 
