@@ -6,10 +6,7 @@ const techGradients = {
   'Node.js': 'from-green-500 to-emerald-400',
   'MongoDB': 'from-green-600 to-green-400',
   'Express': 'from-gray-600 to-gray-400',
-  'Firebase': 'from-orange-500 to-yellow-400',
   'Tailwind CSS': 'from-cyan-500 to-blue-400',
-  'Redux': 'from-purple-500 to-pink-400',
-  'Stripe': 'from-blue-600 to-indigo-400',
   'Framer Motion': 'from-pink-500 to-rose-400',
   'Vite': 'from-purple-600 to-purple-400',
   // Add more technology gradients as needed

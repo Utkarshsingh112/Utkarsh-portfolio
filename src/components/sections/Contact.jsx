@@ -47,24 +47,47 @@ const contactInfo = [
 ];
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Implement form submission with EmailJS
-    console.log('Form submitted:', formData);
-  };
+    setLoading(true);
+    setError('');
+    setSuccess(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    try {
+      const form = e.target;
+      console.log('Submitting form to:', form.action); // Debug log
+      
+      const formData = new FormData(form);
+      console.log('Form data:', Object.fromEntries(formData)); // Debug log
+
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      console.log('Response status:', response.status); // Debug log
+      const responseData = await response.text();
+      console.log('Response data:', responseData); // Debug log
+
+      if (response.ok) {
+        setSuccess(true);
+        form.reset();
+      } else {
+        throw new Error(`Failed to send message: ${response.status} ${responseData}`);
+      }
+    } catch (error) {
+      console.error('Detailed error:', error); // Debug log
+      setError(`Failed to send message: ${error.message}. Please try again or contact me directly at utkarshsinghrajawat12@gmail.com`);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -151,7 +174,23 @@ const Contact = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
             >
-              <form onSubmit={handleSubmit} className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200/50 dark:border-gray-700/50 space-y-6">
+              <form 
+                action="https://formsubmit.co/3408dccc507f2a387563594c1515ef62"
+                method="POST"
+                onSubmit={handleSubmit}
+                className="bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-gray-200/50 dark:border-gray-700/50 space-y-6"
+              >
+                {/* Add subject field */}
+                <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission" />
+                
+                {/* Existing honeypot and other hidden fields */}
+                <input type="text" name="_honey" style={{ display: 'none' }} />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value={window.location.href} />
+                
+                {/* Add template ID for better formatting */}
+                <input type="hidden" name="_template" value="table" />
+
                 <div>
                   <label
                     htmlFor="name"
@@ -163,13 +202,12 @@ const Contact = () => {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:text-white transition-colors"
                     placeholder="Your name"
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="email"
@@ -181,13 +219,12 @@ const Contact = () => {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleChange}
                     required
                     className="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:text-white transition-colors"
                     placeholder="your.email@example.com"
                   />
                 </div>
+
                 <div>
                   <label
                     htmlFor="message"
@@ -198,22 +235,34 @@ const Contact = () => {
                   <textarea
                     id="message"
                     name="message"
-                    value={formData.message}
-                    onChange={handleChange}
                     required
                     rows="4"
                     className="w-full px-4 py-2 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent dark:text-white transition-colors resize-none"
                     placeholder="Your message..."
                   />
                 </div>
+
+                {error && (
+                  <div className="text-red-500 text-sm">{error}</div>
+                )}
+
+                {success && (
+                  <div className="text-green-500 text-sm">
+                    Message sent successfully! I'll get back to you soon.
+                  </div>
+                )}
+
                 <motion.button
                   type="submit"
-                  className="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  disabled={loading}
+                  className={`w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2 ${
+                    loading ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
+                  whileHover={{ scale: loading ? 1 : 1.02 }}
+                  whileTap={{ scale: loading ? 1 : 0.98 }}
                 >
                   <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5" />
-                  Send Message
+                  {loading ? 'Sending...' : 'Send Message'}
                 </motion.button>
               </form>
             </motion.div>
