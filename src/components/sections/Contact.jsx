@@ -91,7 +91,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-[#f5f5f5] via-[#ffffff] to-[#eaeaea] dark:from-[#0d0d0d] dark:via-[#121212] dark:to-[#1a1a1a]">
+    <section id="contact" className="relative py-12 rounded-3xl mx-4 my-2 overflow-hidden">
+      {/* Grid Pattern Background */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] dark:opacity-[0.05]" />
+      </div>
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <motion.div

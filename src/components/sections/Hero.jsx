@@ -127,10 +127,8 @@ const Hero = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
               >
-                I'm a passionate developer who loves crafting beautiful, performant web applications. 
-                With a keen eye for design and a focus on user experience, I specialize in building 
-                modern React applications that are both powerful and delightful to use. When I'm not 
-                coding, you'll find me exploring new technologies or contributing to open-source projects.
+                I'm a passionate full-stack developer who loves crafting beautiful and functional web applications. 
+                When I'm not coding, you'll find me exploring new technologies or reading books.
               </motion.p>
 
               {/* Expertise Badges */}
@@ -201,21 +199,21 @@ const Hero = () => {
               transition={{ duration: 0.5, delay: 0.4 }}
             >
               {/* Photo Container */}
-              <div className="relative w-full aspect-square max-w-md mx-auto group">
+              <div className="relative w-full max-w-md mx-auto group">
                 {/* Decorative Elements */}
                 <motion.div 
-                  className="absolute -inset-4 bg-primary-100 dark:bg-primary-900/20 rounded-2xl"
+                  className="absolute -inset-4 bg-primary-100 dark:bg-primary-900/20 rounded-full"
                   animate={{ rotate: [0, 3, 0, -3, 0] }}
                   transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 />
                 <motion.div 
-                  className="absolute -inset-4 bg-primary-200 dark:bg-primary-800/20 rounded-2xl"
+                  className="absolute -inset-4 bg-primary-200 dark:bg-primary-800/20 rounded-full"
                   animate={{ rotate: [0, -3, 0, 3, 0] }}
                   transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
                 />
                 
                 {/* Photo */}
-                <div className="relative w-full h-full rounded-2xl overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl transform transition-transform duration-500 group-hover:scale-[1.02]">
+                <div className="relative w-full aspect-square max-w-[300px] mx-auto rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl transform transition-all duration-500 group-hover:scale-[1.02] group-hover:border-primary-400 dark:group-hover:border-primary-500 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] dark:group-hover:shadow-[0_0_20px_rgba(96,165,250,0.5)]">
                   <img
                     src={profileImage}
                     alt="Utkarsh Singh"
