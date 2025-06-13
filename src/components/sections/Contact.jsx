@@ -33,16 +33,28 @@ const contactInfo = [
     icon: faEnvelope,
     text: 'utkarshsinghrajawat12@gmail.com',
     link: 'mailto:utkarshsinghrajawat12@gmail.com',
+    iconColor: 'text-[#D44638] dark:text-[#EA4335]',
+    bgColor: 'bg-red-50 dark:bg-red-900/20',
+    hoverBgColor: 'group-hover:bg-red-100 dark:group-hover:bg-red-900/30',
+    hoverTextColor: 'group-hover:text-[#EA4335] dark:group-hover:text-[#EA4335]',
   },
   {
     icon: faPhone,
     text: '+91 9351571387',
     link: 'tel:+919351571387',
+    iconColor: 'text-[#25D366] dark:text-[#25D366]',
+    bgColor: 'bg-green-50 dark:bg-green-900/20',
+    hoverBgColor: 'group-hover:bg-green-100 dark:group-hover:bg-green-900/30',
+    hoverTextColor: 'group-hover:text-[#128C7E] dark:group-hover:text-[#128C7E]',
   },
   {
     icon: faMapMarkerAlt,
     text: 'Jaipur,Rajasthan,India',
     link: 'https://maps.google.com/?q=Jaipur,India',
+    iconColor: 'text-[#4285F4] dark:text-[#4285F4]',
+    bgColor: 'bg-blue-50 dark:bg-blue-900/20',
+    hoverBgColor: 'group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30',
+    hoverTextColor: 'group-hover:text-[#1a73e8] dark:group-hover:text-[#1a73e8]',
   },
 ];
 
@@ -132,18 +144,27 @@ const Contact = () => {
                 </h3>
                 <div className="space-y-4">
                   {contactInfo.map((info, index) => (
-                    <a
+                    <motion.a
                       key={index}
                       href={info.link}
                       target={info.link.startsWith('http') ? '_blank' : undefined}
                       rel={info.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                      className="flex items-center gap-4 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors group"
+                      className="group flex items-center gap-4 p-3 rounded-xl transition-all duration-300 hover:shadow-md"
+                      whileHover={{ x: 4 }}
+                      whileTap={{ scale: 0.98 }}
                     >
-                      <div className="w-10 h-10 rounded-full bg-primary-100 dark:bg-primary-900/30 flex items-center justify-center group-hover:bg-primary-200 dark:group-hover:bg-primary-800/50 transition-colors">
-                        <FontAwesomeIcon icon={info.icon} className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+                      <div className={`w-12 h-12 rounded-xl ${info.bgColor} ${info.hoverBgColor} flex items-center justify-center transition-colors duration-300`}>
+                        <FontAwesomeIcon 
+                          icon={info.icon} 
+                          className={`w-5 h-5 ${info.iconColor} ${info.hoverTextColor} transition-colors duration-300`} 
+                        />
                       </div>
-                      <span>{info.text}</span>
-                    </a>
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-sm font-medium text-gray-600 dark:text-gray-300 ${info.hoverTextColor} transition-colors duration-300 truncate`}>
+                          {info.text}
+                        </p>
+                      </div>
+                    </motion.a>
                   ))}
                 </div>
               </div>
