@@ -181,7 +181,7 @@ const Hero = () => {
                   size="lg"
                   className="group"
                   as="a"
-                  href="/resume.pdf"
+                  href="https://flowcv.com/resume/j2klqlkvhu"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

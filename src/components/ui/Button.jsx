@@ -22,25 +22,40 @@ const Button = forwardRef(
       className = '',
       type = 'button',
       disabled = false,
+      as: Component = 'button',
       ...props
     },
     ref
   ) => {
+    const baseClasses = `
+      inline-flex items-center justify-center
+      font-semibold rounded-lg
+      transition-colors duration-200
+      focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
+      disabled:opacity-50 disabled:cursor-not-allowed
+      ${variants[variant]}
+      ${sizes[size]}
+      ${className}
+    `;
+
+    if (Component === 'a') {
+      return (
+        <a
+          ref={ref}
+          className={baseClasses}
+          {...props}
+        >
+          {children}
+        </a>
+      );
+    }
+
     return (
       <button
         ref={ref}
         type={type}
         disabled={disabled}
-        className={`
-          inline-flex items-center justify-center
-          font-semibold rounded-lg
-          transition-colors duration-200
-          focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2
-          disabled:opacity-50 disabled:cursor-not-allowed
-          ${variants[variant]}
-          ${sizes[size]}
-          ${className}
-        `}
+        className={baseClasses}
         {...props}
       >
         {children}
