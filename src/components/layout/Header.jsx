@@ -3,6 +3,7 @@ import ThemeToggle from '../ui/ThemeToggle';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
+  { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Projects', href: '#projects' },
   { name: 'Contact', href: '#contact' },
@@ -30,7 +31,7 @@ const Header = () => {
       const scrollPos = window.scrollY + 80; // header height offset
       let current = 'Home';
       for (let i = 0; i < offsets.length; i++) {
-        if (scrollPos >= offsets[i].top) {
+        if (offsets[i] && scrollPos >= offsets[i].top) {
           current = offsets[i].name;
         }
       }
