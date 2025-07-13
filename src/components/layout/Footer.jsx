@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-center">
           <div className="text-gray-600 dark:text-gray-400">
-            © {currentYear} Utkarsh Singh. All rights reserved.
+            © {currentYear} Utkarsh Singh.Built with ❤️ using React • Hosted on Vercel
           </div>
         </div>
       </div>
