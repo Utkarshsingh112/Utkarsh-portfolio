@@ -8,7 +8,6 @@ Hey there! 👋 This is my personal portfolio website where I showcase my journe
 - 🌓 Dark/Light mode with system preference detection
 - 📱 Mobile-first approach with optimized performance
 - 🎯 Interactive project showcase
-- 📝 Blog/Articles section for sharing tech insights
 - 📬 Contact form with email integration
 - 🔍 SEO optimized
 - ⚡ Fast loading with Vite and optimized assets
