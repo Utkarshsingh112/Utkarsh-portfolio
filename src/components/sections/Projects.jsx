@@ -6,12 +6,12 @@ import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 const projects = [
   {
     id: 1,
-    title: 'Portfolio Builder',
-    description: 'A dynamic portfolio builder that helps developers showcase their work. Features include real-time preview, custom themes, and seamless deployment. Built with React and Tailwind CSS, it demonstrates modern web development practices and responsive design principles.',
-    image: '/projects/portfolio-builder.jpg',
-    technologies: ['React', 'Tailwind CSS', 'Framer Motion', 'Vite'],
-    liveLink: 'https://portfolio-builder-demo.vercel.app',
-    githubLink: 'https://github.com/utkarshsingh/portfolio-builder',
+    title: 'LMS-AI',
+    description: 'A dynamic learning management system powered by AI. Features include personalized learning paths, real-time feedback, and seamless integration with existing tools. Built with React and Tailwind CSS, it demonstrates modern web development practices and responsive design principles.',
+    image: 'src/assets/Screenshot 2025-09-29 221310.png',
+    technologies: ['Next.js', 'Tailwind CSS', 'Supabase', 'Clerk','Vapi'],
+    liveLink: 'https://lms-ai-ten.vercel.app/',
+    githubLink: 'https://github.com/utkarshsingh112/lms-ai',
     featured: true,
   },
   {
