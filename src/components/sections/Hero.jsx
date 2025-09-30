@@ -21,11 +21,6 @@ const expertise = [
     color: 'text-orange-500 dark:text-orange-400'
   },
   { 
-    text: 'Database Architecture',
-    icon: WrenchScrewdriverIcon,
-    color: 'text-red-500 dark:text-red-400'
-  },
-  { 
     text: 'Performance Optimization',
     icon: CommandLineIcon,
     color: 'text-green-500 dark:text-green-400'
@@ -181,7 +176,7 @@ const Hero = () => {
                   size="lg"
                   className="group"
                   as="a"
-                  href="https://flowcv.com/resume/j2klqlkvhu"
+                  href="https://drive.google.com/file/d/1dOxwZung-WgPb4oj632pl7ImcEw-9XjX/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
