@@ -6,7 +6,7 @@ const Layout = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-black transition-colors duration-300">
       <Header />
-      <main className="container mx-auto px-4 py-8">
+      <main className="container mx-auto px-4 pt-4 md:pt-8 pb-8">
         <Outlet />
       </main>
       <Footer />

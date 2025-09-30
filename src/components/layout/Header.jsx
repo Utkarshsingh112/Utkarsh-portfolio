@@ -60,7 +60,7 @@ const Header = () => {
           : 'bg-transparent'
       } border-b border-gray-200/50 dark:border-gray-800/50`}
     >
-      <nav className="container mx-auto px-4 py-3">
+      <nav className="container mx-auto px-4 py-2 md:py-3">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a

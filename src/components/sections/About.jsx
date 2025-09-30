@@ -52,7 +52,7 @@ const stats = [
 
 const About = () => {
   return (
-    <section id="about" className="relative py-12 rounded-3xl mx-4 my-2 overflow-hidden">
+    <section id="about" className="relative py-10 md:py-12 rounded-3xl mx-4 my-2 overflow-hidden scroll-mt-24 md:scroll-mt-28">
       {/* Grid Pattern Background */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.02] dark:opacity-[0.05]" />
