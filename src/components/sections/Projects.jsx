@@ -60,6 +60,11 @@ const Projects = () => {
     };
   }, []);
 
+  // Compute list to display based on toggle
+  const displayedProjects = useMemo(() => {
+    return showAll ? [...featuredProjects, ...otherProjects] : featuredProjects;
+  }, [showAll, featuredProjects, otherProjects]);
+
   // Toggle show all projects
   const toggleShowAll = () => {
     setShowAll(prev => !prev);
@@ -97,54 +102,33 @@ const Projects = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="space-y-8"
         >
-          {/* Featured Projects */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {featuredProjects.map(project => (
+            {displayedProjects.map(project => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
 
-          {/* Other Projects with Show More Button */}
           {otherProjects.length > 0 && (
-            <div className="space-y-8">
-              <AnimatePresence>
-                {showAll && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                  >
-                    {otherProjects.map(project => (
-                      <ProjectCard key={project.id} project={project} />
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-              {/* Show More Button */}
-              <motion.div
-                className="flex justify-center"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 }}
+            <motion.div
+              className="flex justify-center"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              <button
+                onClick={toggleShowAll}
+                className="group flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300"
               >
-                <button
-                  onClick={toggleShowAll}
-                  className="group flex items-center gap-2 px-6 py-3 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl border border-gray-200 dark:border-gray-700 transition-all duration-300"
-                >
-                  <span className="text-gray-700 dark:text-gray-300 font-medium">
-                    {showAll ? 'Show Less' : 'Show More'}
-                  </span>
-                  {showAll ? (
-                    <ChevronUpIcon className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors" />
-                  ) : (
-                    <ChevronDownIcon className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors" />
-                  )}
-                </button>
-              </motion.div>
-            </div>
+                <span className="text-gray-700 dark:text-gray-300 font-medium">
+                  {showAll ? 'Show Less' : 'Show More'}
+                </span>
+                {showAll ? (
+                  <ChevronUpIcon className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors" />
+                ) : (
+                  <ChevronDownIcon className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-primary-500 dark:group-hover:text-primary-400 transition-colors" />
+                )}
+              </button>
+            </motion.div>
           )}
         </motion.div>
       </div>
